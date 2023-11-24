@@ -503,6 +503,8 @@ require('which-key').register {
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 }
 
+require 'lsp.swift'
+
 -- mason-lspconfig requires that hese setup functions are called in this order
 -- before setting up the servers.
 require('mason').setup()
@@ -544,9 +546,12 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
+
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
+
+
 
 mason_lspconfig.setup_handlers {
   function(server_name)
